@@ -7,35 +7,16 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div id="board">
-        <input id="rows" placeholder="rows"><input id="columns" placeholder="columns"><button id="start">start</button>
+    <div id="game-selection">
+        <a href="/twoplayer">
+            Two Players
+        </a>
+        <br>
+        <a href="/multiplayer">
+            Multiplayer
+        </a>
     </div>
-    
 
-    <script id="win-template" type="text/x-handlebars-template">
-        <div id="win">
-            Player {{this}} has won the Game!
-            <button id="new-game">New Game</button>
-        </div>
-    </script>
-
-    <script id="new-game-template" type="text/x-handlebars-template">
-        <input id="rows" placeholder="rows">
-        <input id="columns" placeholder="columns">
-        <button id="start">Start</button>
-    </script>
-
-    <script id="board-template" type="text/x-handlebars-template">
-        <table>
-            {{#each this}}
-            <tr>
-                {{#each this}}
-                <th class="cube-{{this}}"></th>
-                {{/each}}
-            </tr>
-            {{/each}}
-        </table>
-    </script>
     <script src="/jquery/dist/jquery.js"></script>
     <script src="/handlebars/dist/handlebars.js"></script>
     <script src="Renderer.js"></script>

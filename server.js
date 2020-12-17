@@ -10,7 +10,24 @@ app.use('/multiplayer', express.static(path.join(__dirname, 'multiDist')))
 app.use('/twoplayer', express.static(path.join(__dirname, 'twoPlayerDist')))
 
 
-const port = 3000
-app.listen((process.env.PORT || port), function() {
-    console.log(`Server running on port ${port}`)
+const PORT = 3000
+const server = app.listen((process.env.PORT || PORT), function() {
+    console.log(`Server running on port ${PORT}`)
+})
+
+const io = require('socket.io')(server)
+let counter = 1
+io.on('connection', (socket) => {
+    socket.on('join', () => {
+        io.emit('join', counter++)
+    })
+    socket.on('start', (data) => {
+        io.emit('start', data)
+    })
+    socket.on('move', (data) => {
+        io.emit('move', data)
+    })
+    socket.on('disconnect', () => {
+        counter--
+    })
 })

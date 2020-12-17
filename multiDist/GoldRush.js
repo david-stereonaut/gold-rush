@@ -1,5 +1,5 @@
 class GoldRush extends Matrix {
-    constructor(numRows, numColumns) {
+    constructor() {
         super()
         this.coins = 0
         this.matrix = []
@@ -41,6 +41,14 @@ class GoldRush extends Matrix {
             }
         }
         return matrix
+    }
+
+    setData(data) {
+        this.matrix = data.matrix
+        this.coins = data.coins
+        this.player1 = data.player1
+        this.player2 = data.player2
+        this.win = data.win
     }
 
     movePlayer(player, direction) {

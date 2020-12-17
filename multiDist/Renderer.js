@@ -21,4 +21,9 @@ class Renderer {
         const newGameHTML = newGameTemplate()
         $("#board").append(newGameHTML)
     }
+
+    renderWaiting() {
+        $("#board").empty()
+        $("#board").append('<div id="waiting">Waiting for player 1 to set the board</div>')
+    }
 }

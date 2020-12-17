@@ -1,5 +1,5 @@
 class GoldRush extends Matrix {
-    constructor(numRows, numColumns) {
+    constructor() {
         super()
         this.coins = 0
         this.matrix = []
