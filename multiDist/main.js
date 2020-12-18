@@ -3,16 +3,16 @@ const board = new GoldRush()
 const renderer = new Renderer()
 
 let playerNum
-socket.emit('join')
-socket.on('join', function (num) {
+socket.emit('join multi')
+socket.on('join multi', function (num) {
     if (!playerNum) {
         playerNum = num
         if (num == 2) {
             renderer.renderWaiting()
         }
     }
-    if (num > 2) {
-        window.location.href = "/twoplayer"
+    if (playerNum === 3) {
+        window.location.href = "/oneplayer"
     }
 })
 socket.on('start', function (data) {

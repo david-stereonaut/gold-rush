@@ -18,8 +18,12 @@ const server = app.listen((process.env.PORT || PORT), function() {
 const io = require('socket.io')(server)
 let counter = 1
 io.on('connection', (socket) => {
-    socket.on('join', () => {
-        io.emit('join', counter++)
+    socket.on('join multi', () => { 
+        if (counter === 3) {
+            io.emit('join multi', 3)
+        } else {
+            io.emit('join multi', counter++)
+        }
     })
     socket.on('start', (data) => {
         io.emit('start', data)
@@ -28,7 +32,7 @@ io.on('connection', (socket) => {
         io.emit('move', data)
     })
     socket.on('disconnect', () => {
-        if (counter > 1) {
+        if (counter === 3 || counter === 2) {
             counter--
         }
     })
