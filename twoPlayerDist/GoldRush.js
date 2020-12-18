@@ -59,7 +59,9 @@ class GoldRush extends Matrix {
             newPosition = [(playerPosition[0]), playerPosition[1] + 1]
         }
         if (newPosition[0] < 0 || newPosition[0] > this.matrix[0].length - 1 ) { return }
-        if (this.matrix[newPosition[0]][newPosition[1]] === 'w' || this.matrix[newPosition[0]][newPosition[1]] === 2) { return }
+        if (this.matrix[newPosition[0]][newPosition[1]] === 'w' ||
+            this.matrix[newPosition[0]][newPosition[1]] === 2 ||
+            this.matrix[newPosition[0]][newPosition[1]] === 1) { return }
         if(this.matrix[newPosition[0]][newPosition[1]]){
             if(this.matrix[newPosition[0]][newPosition[1]] === 'c') { 
                 this['player'+player].score += 10
@@ -69,7 +71,11 @@ class GoldRush extends Matrix {
             this.matrix[newPosition[0]][newPosition[1]] = player
             this['player'+player].position = newPosition
             if(this.coins === 0) {
-                this.win = this.player1.score > this.player2.score ? 1 : 2
+                if (this.player1.score === this.player2.score) {
+                    this.win = 'tie'
+                } else {
+                    this.win = this.player1.score > this.player2.score ? 1 : 2
+                }
             }
         }
     }

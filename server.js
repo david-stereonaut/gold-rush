@@ -8,7 +8,7 @@ app.use(express.static(path.join(__dirname, 'dist')))
 app.use(express.static(path.join(__dirname, 'node_modules')))
 app.use('/multiplayer', express.static(path.join(__dirname, 'multiDist')))
 app.use('/twoplayer', express.static(path.join(__dirname, 'twoPlayerDist')))
-
+app.use('/oneplayer', express.static(path.join(__dirname, 'onePlayerDist')))
 
 const PORT = 3000
 const server = app.listen((process.env.PORT || PORT), function() {
@@ -28,6 +28,8 @@ io.on('connection', (socket) => {
         io.emit('move', data)
     })
     socket.on('disconnect', () => {
-        counter--
+        if (counter > 1) {
+            counter--
+        }
     })
 })

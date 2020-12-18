@@ -9,6 +9,7 @@ $('#board').on('click', '#start', function () {
 })
 
 $('#board').on('click', '#new-game', function () {
+    board.resetBoard()
     renderer.renderNewGame()
 })
 
@@ -34,7 +35,6 @@ $(document).on('keydown', function (e) {
         renderer.renderBoard(board.matrix)
         if (board.win != 0) {
             renderer.renderWin(board.win)
-            board.resetBoard()
         }
     }
 })

@@ -9,10 +9,16 @@ class Renderer {
         $("#board").append(boardHTML)
     }
 
-    renderWin(num) {
-        const winTemplate = Handlebars.compile($("#win-template").html())
-        const winHTML = winTemplate(num)
-        $("#board").append(winHTML)
+    renderWin(win) {
+        if (win === 'tie') {
+            const tieTemplate = Handlebars.compile($("#tie-template").html())
+            const tieHTML = tieTemplate(win)
+            $("#board").append(tieHTML)
+        } else {
+            const winTemplate = Handlebars.compile($("#win-template").html())
+            const winHTML = winTemplate(win)
+            $("#board").append(winHTML)
+        }
     }
 
     renderNewGame() {

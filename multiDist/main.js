@@ -41,6 +41,7 @@ $('#board').on('click', '#new-game', function () {
     if (playerNum == 2) {
         return renderer.renderWaiting()
     }
+    board.resetBoard()
     renderer.renderNewGame()
 })
 
@@ -59,7 +60,6 @@ $(document).on('keydown', function (e) {
         renderer.renderBoard(board.matrix)
         if (board.win != 0) {
             renderer.renderWin(board.win)
-            board.resetBoard()
         }
     }
 })
