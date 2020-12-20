@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="setup">
+        <div class="setup-input">
+            <input id="rows" placeholder="Rows">
+        </div>
+        <div class="setup-input">
+            <input id="columns" placeholder="Columns">
+        </div>
+        <div id="start">Play</div>
+    </div>
+    <div id="board">
+    </div>
+    
+
+    <script id="win-template" type="text/x-handlebars-template">
+        <div id="win">
+            <p>Player {{this}} has won the Game!</p>
+            <div id="new-game">New game</div>
+        </div>
+    </script>
+
+    <script id="tie-template" type="text/x-handlebars-template">
+        <div id="win">
+            <p>It's a tie!</p>
+            <div id="new-game">New game</div>
+        </div>
+    </script>
+
+    <script id="new-game-template" type="text/x-handlebars-template">
+        <div class="setup-input">
+            <input id="rows" placeholder="Rows">
+        </div>
+        <div class="setup-input">
+            <input id="columns" placeholder="Columns">
+        </div>
+        <div id="start">Play</div>
+    </script>
+
+    <script id="board-template" type="text/x-handlebars-template">
+        <table id="game">
+            {{#each this}}
+            <tr>
+                {{#each this}}
+                <th class="cube-{{this}}"></th>
+                {{/each}}
+            </tr>
+            {{/each}}
+        </table>
+    </script>
+
+    <script id="scores-template" type="text/x-handlebars-template">
+        <div id="scores">
+            <div class="score">
+                <div class="cube-1"></div>
+                <p>&nbsp;{{player1}}</p>
+            </div>
+            <div class="score">
+                <div class="cube-2"></div>
+                <p>&nbsp;{{player2}}</p>
+            </div>
+        </div>
+    </script>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="/jquery/dist/jquery.js"></script>
+    <script src="/handlebars/dist/handlebars.js"></script>
+    <script src="Renderer.js"></script>
+    <script src="Matrix.js"></script>
+    <script src="GoldRush.js"></script>
+    <script src="main.js"></script>
+</body>
+</html>

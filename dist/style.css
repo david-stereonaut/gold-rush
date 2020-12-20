@@ -1,0 +1,45 @@
+body {
+    background-image: url('./images/background.jpg');
+    font-family: 'Roboto', sans-serif;
+}
+
+#game-selection {
+    max-width: 500px;
+    margin: auto;
+    margin-top: 45vh;
+    padding: 10px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr
+}
+
+a {
+    text-decoration: none;
+    display: grid;
+    height: 40px;
+    width: 125px;
+    /* padding: 2vh; */
+    background-color: #81171b;
+    color: white;
+    border-radius: 4px;
+    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+    align-items: center;
+    justify-items: center;
+    /* box-shadow: 10px -7px 15px darkgray, lightgreen 0px 0px 3px inset; */
+    box-shadow: 1px 1px 4px black;
+    cursor: pointer;
+}
+
+@keyframes lighten-up {
+    from {
+        background-color: #81171b;
+    }
+    to {
+        background-color: #ad2e24;
+    }
+}
+
+a:hover {
+    background-color:#ad2e24;
+    animation-name: lighten-up;
+    animation-duration: 0.2s;
+}
