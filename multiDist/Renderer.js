@@ -3,6 +3,7 @@ class Renderer {
     }
 
     renderBoard(matrix) {
+        $('#setup').empty()
         $("#board").empty()
         const boardTemplate = Handlebars.compile($("#board-template").html())
         const boardHTML = boardTemplate(matrix)
@@ -25,11 +26,18 @@ class Renderer {
         $("#board").empty()
         const newGameTemplate = Handlebars.compile($("#new-game-template").html())
         const newGameHTML = newGameTemplate()
-        $("#board").append(newGameHTML)
+        $("#setup").append(newGameHTML)
     }
 
     renderWaiting() {
+        $("#setup").empty()
         $("#board").empty()
         $("#board").append('<div id="waiting">Waiting for player 1 to set the board</div>')
+    }
+
+    renderScores(scores) {
+        const scoresTemplate = Handlebars.compile($("#scores-template").html())
+        const scoresHTML = scoresTemplate(scores)
+        $("#board").append(scoresHTML)
     }
 }

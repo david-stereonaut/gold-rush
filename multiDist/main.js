@@ -18,23 +18,28 @@ socket.on('join multi', function (num) {
 socket.on('start', function (data) {
     board.setData(data)
     renderer.renderBoard(board.matrix)
+    renderer.renderScores({player1: 0, player2: 0})
 })
 
 socket.on('move', function (data) {
-    board.setData(data)
-    renderer.renderBoard(board.matrix)
-    if (board.win != 0) {
-        renderer.renderWin(board.win)
-        board.resetBoard()
+    if (board.win === 0) {
+        board.setData(data)
+        renderer.renderBoard(board.matrix)
+        renderer.renderScores({player1: board.player1.score, player2: board.player2.score})
+        if (board.win != 0) {
+            renderer.renderWin(board.win)
+            board.resetBoard()
+        }
     }
 })
 
-$('#board').on('click', '#start', function () {
+$('#setup').on('click', '#start', function () {
     let rows = $('#rows').val()
     let columns = $('#columns').val()
     board.matrix = board.generateBoard(rows, columns)
     socket.emit('start', board)
     renderer.renderBoard(board.matrix)
+    renderer.renderScores({player1: board.player1.score, player2: board.player2.score})
 })
 
 $('#board').on('click', '#new-game', function () {
@@ -54,12 +59,19 @@ const directions = {
 
 
 $(document).on('keydown', function (e) {
-    if (directions[e.code]) {
-        board.movePlayer(playerNum, directions[e.code])
-        socket.emit('move', board)
-        renderer.renderBoard(board.matrix)
-        if (board.win != 0) {
-            renderer.renderWin(board.win)
+    if (board.win === 0){
+        if (directions[e.code]) {
+            board.movePlayer(playerNum, directions[e.code])
+            socket.emit('move', board)
+            renderer.renderBoard(board.matrix)
+            renderer.renderScores({player1: board.player1.score, player2: board.player2.score})
+            if (board.win != 0) {
+                renderer.renderWin(board.win)
+            }
         }
     }
 })
+
+$(window).on('beforeunload', function(){
+    socket.emit('bye')
+  });

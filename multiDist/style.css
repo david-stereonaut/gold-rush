@@ -1,5 +1,93 @@
 body {
     background-image: url('./images/background.jpg');
+    font-family: 'Roboto', sans-serif;
+    margin:0;
+}
+
+#setup {
+    position: absolute;
+    width: 500px;
+    height: 40px;
+    /* margin: auto; */
+    margin-top: 45vh;
+    margin-left: calc(50vw - 250px);
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+input {
+    width: 100px;
+    justify-self: center;
+    border: none;
+    border-bottom: 1px solid #81171b;
+    background-color: #c75146;
+    text-align: center;
+    color: #f1dca7;
+}
+
+::placeholder {
+    font-family: 'Roboto', sans-serif;
+    text-align: center;
+    color: #ffcb69;
+}
+
+#start {
+    display: grid;
+    height: 40px;
+    background-color: #81171b;
+    color: white;
+    border-radius: 4px;
+    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+    align-items: center;
+    justify-items: center;
+    align-self: center;
+    box-shadow: 1px 1px 4px black;
+    cursor: pointer;
+}
+
+#new-game {
+    display: grid;
+    padding: 1vh;
+    background-color: #81171b;
+    color: white;
+    border-radius: 4px;
+    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+    align-items: center;
+    justify-items: center;
+    align-self: center;
+    box-shadow: 1px 1px 4px black;
+    cursor: pointer;
+}
+
+@keyframes lighten-up {
+    from {
+        background-color: #81171b;
+    }
+    to {
+        background-color: #ad2e24;
+    }
+}
+
+#start:hover {
+    background-color:#ad2e24;
+    animation-name: lighten-up;
+    animation-duration: 0.2s;
+}
+
+#new-game:hover {
+    background-color:#ad2e24;
+    animation-name: lighten-up;
+    animation-duration: 0.2s;
+}
+
+.setup-input {
+    /* padding: 15px; */
+    background-color: #c75146;
+    margin: 15px;
+    height: 40px;
+    display: grid;
+    align-items: center;
+    border-radius: 5px;
 }
 
 .cube-e {
@@ -31,6 +119,11 @@ body {
     background-size: cover;
 }
 
+/* #game {
+    flex: 1 1 auto;
+    overflow-y: auto;
+} */
+
 table {
     border-collapse: collapse;
 }
@@ -42,4 +135,80 @@ table, th, td {
 th {
     height: 7vh;
     width: 7vw;;
+}
+
+#scores {
+    margin: 2vh;
+    flex: 1 1 fill;
+    /* overflow-y: auto; */
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.score {
+    background-color: rgba(129, 23, 27, 0.9);
+    display: flex;
+    width: 100px;
+    flex-direction: row;
+    font-family: 'Roboto', sans-serif;
+    text-justify: center;
+    text-align: center;
+    margin: 1vh;
+    border-radius: 8px;
+    font-size: large;
+    font-weight: bold;
+}
+
+P {
+    text-justify: center;
+    text-align: center;
+}
+
+div.cube-1 {
+    margin: 1vh;
+    height: 50px;
+    width:50px;
+    border-radius: 50%;
+}
+
+div.cube-2 {
+    margin: 1vh;
+    height: 50px;
+    width:50px;
+    border-radius: 50%;
+}
+
+#board {
+    margin-top: 2vh;
+    display: flex;
+    flex-direction: column;
+    align-self:center;
+    /* flex-flow: column wrap; */
+    align-items: center;
+}
+
+#waiting {
+    margin-top: 45vh;
+    background-color: rgba(129, 23, 27, 0.9);
+    padding: 3vh;
+    font-size: large;
+    font-weight: bolder;
+    border-radius: 8px;
+}
+
+#win {
+    margin-top: 45vh;
+    position: absolute;
+    background-color: rgba(129, 23, 27, 0.9);
+    padding: 3vh;
+    font-size: large;
+    font-weight: bolder;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: row;
+}
+
+#win > p {
+    margin: 1vh;
 }

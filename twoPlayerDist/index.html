@@ -4,36 +4,50 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <div id="setup">
+        <div class="setup-input">
+            <input id="rows" placeholder="Rows">
+        </div>
+        <div class="setup-input">
+            <input id="columns" placeholder="Columns">
+        </div>
+        <div id="start">Play</div>
+    </div>
     <div id="board">
-        <input id="rows" placeholder="rows"><input id="columns" placeholder="columns"><button id="start">start</button>
     </div>
     
 
     <script id="win-template" type="text/x-handlebars-template">
         <div id="win">
-            Player {{this}} has won the Game!
-            <button id="new-game">New Game</button>
+            <p>Player {{this}} has won the Game!</p>
+            <div id="new-game">New game</div>
         </div>
     </script>
 
     <script id="tie-template" type="text/x-handlebars-template">
         <div id="win">
-            It's a tie!
-            <button id="new-game">New Game</button>
+            <p>It's a tie!</p>
+            <div id="new-game">New game</div>
         </div>
     </script>
 
     <script id="new-game-template" type="text/x-handlebars-template">
-        <input id="rows" placeholder="rows">
-        <input id="columns" placeholder="columns">
-        <button id="start">Start</button>
+        <div class="setup-input">
+            <input id="rows" placeholder="Rows">
+        </div>
+        <div class="setup-input">
+            <input id="columns" placeholder="Columns">
+        </div>
+        <div id="start">Play</div>
     </script>
 
     <script id="board-template" type="text/x-handlebars-template">
-        <table>
+        <table id="game">
             {{#each this}}
             <tr>
                 {{#each this}}
@@ -43,6 +57,20 @@
             {{/each}}
         </table>
     </script>
+
+    <script id="scores-template" type="text/x-handlebars-template">
+        <div id="scores">
+            <div class="score">
+                <div class="cube-1"></div>
+                <p>&nbsp;{{player1}}</p>
+            </div>
+            <div class="score">
+                <div class="cube-2"></div>
+                <p>&nbsp;{{player2}}</p>
+            </div>
+        </div>
+    </script>
+
     <script src="/jquery/dist/jquery.js"></script>
     <script src="/handlebars/dist/handlebars.js"></script>
     <script src="Renderer.js"></script>

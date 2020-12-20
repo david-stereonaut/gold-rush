@@ -3,6 +3,7 @@ class Renderer {
     }
 
     renderBoard(matrix) {
+        $('#setup').empty()
         $("#board").empty()
         const boardTemplate = Handlebars.compile($("#board-template").html())
         const boardHTML = boardTemplate(matrix)
@@ -25,6 +26,12 @@ class Renderer {
         $("#board").empty()
         const newGameTemplate = Handlebars.compile($("#new-game-template").html())
         const newGameHTML = newGameTemplate()
-        $("#board").append(newGameHTML)
+        $("#setup").append(newGameHTML)
+    }
+
+    renderScores(scores) {
+        const scoresTemplate = Handlebars.compile($("#scores-template").html())
+        const scoresHTML = scoresTemplate(scores)
+        $("#board").append(scoresHTML)
     }
 }

@@ -78,7 +78,7 @@ class GoldRush extends Matrix {
             this.matrix[playerPosition[0]][playerPosition[1]] = 'e'
             this.matrix[newPosition[0]][newPosition[1]] = player
             this['player'+player].position = newPosition
-            if(this.coins === 0) {
+            if(this.coins === 0 && this.win === 0) {
                 if (this.player1.score === this.player2.score) {
                     this.win = 'tie'
                 } else {
